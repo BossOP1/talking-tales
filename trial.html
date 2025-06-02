@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Tales - Purpose Section</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Museo+Sans+Rounded:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0B87C5',
+                        'primary-yellow': '#FFC73C',
+                        'primary-orange': '#F36E3B',
+                        'primary-green': '#3DD288',
+                        'primary-gray': '#4A4A4A',
+                        'primary-cream': '#F9F0E5'
+                    },
+                    fontFamily: {
+                        'museo-rounded': ['Museo Sans Rounded', 'sans-serif'],
+                        'museo': ['Source Sans Pro', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<section class="bg-primary-cream py-12 md:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Background Decorative Elements -->
+    <div class="absolute top-10 left-4 opacity-20">
+        <div class="w-8 h-8 bg-primary-green rounded-full transform rotate-45"></div>
+    </div>
+    <div class="absolute bottom-10 right-4 opacity-20">
+        <div class="w-6 h-6 bg-primary-orange rounded-full"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto">
+        <!-- Main Content Container -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
+            <!-- Left Side - Content -->
+            <div class="space-y-8">
+                <!-- Header Section -->
+                <div class="space-y-4">
+                    <div class="inline-flex items-center space-x-2 bg-white/50 rounded-full px-4 py-2 backdrop-blur-sm border border-white/30">
+                        <div class="w-2 h-2 bg-primary-blue rounded-full animate-pulse"></div>
+                        <span class="text-primary-gray font-museo text-sm font-medium">Our Purpose</span>
+                    </div>
+                    
+                    <h2 class="font-museo-rounded text-4xl md:text-5xl lg:text-6xl font-bold text-primary-gray leading-tight">
+                        Unlocking Every
+                        <span class="text-primary-blue">Voice</span>,
+                        <br>
+                        <span class="text-primary-orange">One Story</span>
+                        at a Time
+                    </h2>
+                </div>
+
+                <!-- Description -->
+                <div class="space-y-6">
+                    <p class="font-museo text-lg md:text-xl text-primary-gray/80 leading-relaxed">
+                        At Talking Tales, we believe every individual deserves to express themselves with confidence and clarity. Our dedicated speech therapy services help children and adults overcome communication challenges through personalized, evidence-based approaches.
+                    </p>
+                    
+                    <p class="font-museo text-base md:text-lg text-primary-gray/70 leading-relaxed">
+                        We create a nurturing environment where growth happens naturally, celebrating each milestone in your communication journey.
+                    </p>
+                </div>
+
+                <!-- Key Points -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="flex items-start space-x-3 p-4 bg-white/40 rounded-2xl backdrop-blur-sm border border-white/30 hover:bg-white/60 transition-all duration-300">
+                        <div class="flex-shrink-0 w-8 h-8 bg-primary-blue rounded-full flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-museo-rounded text-primary-gray font-semibold text-sm">Personalized Care</h4>
+                            <p class="font-museo text-primary-gray/70 text-xs mt-1">Tailored therapy plans for individual needs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-3 p-4 bg-white/40 rounded-2xl backdrop-blur-sm border border-white/30 hover:bg-white/60 transition-all duration-300">
+                        <div class="flex-shrink-0 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div>
+                            <h4 class="font-museo-rounded text-primary-gray font-semibold text-sm">Expert Guidance</h4>
+                            <p class="font-museo text-primary-gray/70 text-xs mt-1">Certified professionals with proven results</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="pt-4">
+                    <button class="group bg-primary-blue hover:bg-primary-blue/90 text-white font-museo-rounded font-semibold px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center space-x-2">
+                        <span>Start Your Journey</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side - Visual Elements -->
+            <div class="relative">
+                <div class="relative w-full max-w-md mx-auto">
+                    <!-- Main Container with floating elements -->
+                    <div class="relative bg-white/30 backdrop-blur-lg rounded-3xl p-8 border border-white/40 shadow-2xl">
+                        
+                        <!-- Speech Bubble (top) -->
+                        <div class="absolute -top-6 right-8 transform hover:scale-110 transition-transform duration-300">
+                            <div class="relative">
+                                <div class="w-16 h-12 bg-primary-yellow rounded-2xl rounded-br-sm shadow-lg"></div>
+                                <div class="absolute -bottom-1 right-2 w-3 h-3 bg-primary-yellow transform rotate-45"></div>
+                            </div>
+                        </div>
+
+                        <!-- Smiley Face (center-left) -->
+                        <div class="absolute top-12 -left-6 transform hover:rotate-12 hover:scale-110 transition-all duration-300">
+                            <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center shadow-lg">
+                                <!-- Eyes -->
+                                <div class="flex space-x-2">
+                                    <div class="w-2 h-2 bg-white rounded-full"></div>
+                                    <div class="w-2 h-2 bg-white rounded-full"></div>
+                                </div>
+                                <!-- Smile -->
+                                <div class="absolute bottom-3 w-6 h-3 border-b-2 border-white rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <!-- Tulip/Leaf (bottom-left) -->
+                        <div class="absolute bottom-4 left-4 transform hover:rotate-6 hover:scale-110 transition-all duration-300">
+                            <div class="relative">
+                                <!-- Leaf shape -->
+                                <div class="w-10 h-14 bg-primary-orange rounded-full rounded-tl-3xl rounded-br-3xl shadow-lg"></div>
+                            </div>
+                        </div>
+
+                        <!-- Heart (bottom-right) -->
+                        <div class="absolute -bottom-4 -right-4 transform hover:scale-110 transition-transform duration-300">
+                            <div class="relative">
+                                <div class="w-12 h-12 bg-primary-green rounded-full shadow-lg"></div>
+                                <!-- Heart cutout effect -->
+                                <div class="absolute top-1 right-2 w-8 h-6 bg-primary-green rounded-t-full transform rotate-45"></div>
+                            </div>
+                        </div>
+
+                        <!-- Central Content Area -->
+                        <div class="pt-8 pb-4 text-center">
+                            <div class="space-y-4">
+                                <div class="w-20 h-20 bg-gradient-to-br from-primary-blue/20 to-primary-green/20 rounded-full mx-auto flex items-center justify-center backdrop-blur-sm">
+                                    <div class="w-12 h-12 bg-white rounded-full shadow-inner"></div>
+                                </div>
+                                <h3 class="font-museo-rounded text-primary-gray font-bold text-lg">Communication</h3>
+                                <p class="font-museo text-primary-gray/70 text-sm">Building bridges through words</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating accent elements -->
+                    <div class="absolute top-4 right-4 w-3 h-3 bg-primary-yellow rounded-full opacity-60 animate-bounce" style="animation-delay: 0.5s;"></div>
+                    <div class="absolute bottom-8 left-2 w-2 h-2 bg-primary-orange rounded-full opacity-60 animate-bounce" style="animation-delay: 1s;"></div>
+                    <div class="absolute top-1/3 right-2 w-4 h-4 bg-primary-green/30 rounded-full animate-pulse"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .float-delay {
+        animation-delay: 1.5s;
+    }
+</style>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Tales - Speech Therapy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Museo+Sans:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0B87C5',
+                        'primary-yellow': '#FFC73C',
+                        'primary-orange': '#F36E3B',
+                        'primary-green': '#3DD288',
+                        'primary-gray': '#4A4A4A',
+                        'primary-cream': '#F9F0E5'
+                    },
+                    fontFamily: {
+                        'heading': ['Museo Sans Rounded', 'sans-serif'],
+                        'body': ['Museo Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Museo+Sans+Rounded:wght@300;400;500;700;900&display=swap');
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -8px;
+            left: 50%;
+            background: linear-gradient(90deg, #FFC73C, #F36E3B);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #0B87C5;
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #0B87C5, #3DD288);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #3DD288, #0B87C5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(11, 135, 197, 0.3);
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, #FFC73C, #F36E3B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            min-width: 240px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 50;
+            border: 1px solid rgba(11, 135, 197, 0.2);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #4A4A4A;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 4px 8px;
+        }
+        
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, rgba(11, 135, 197, 0.1), rgba(61, 210, 136, 0.1));
+            color: #0B87C5;
+            transform: translateX(4px);
+        }
+        
+        .dropdown-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .dropdown-arrow {
+            margin-left: 4px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-primary-cream">
+    <!-- Navigation Bar -->
+    <nav class="bg-white bg-opacity-95 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary-yellow to-primary-orange flex items-center justify-center shadow-md">
+                        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-heading font-bold text-primary-blue">Talking Tales</h1>
+                        <p class="text-sm font-body text-primary-gray -mt-1">Speech Therapy</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link text-primary-gray font-body font-medium hover:text-primary-blue">Home</a>
+                    <a href="#" class="nav-link text-primary-gray font-body font-medium hover:text-primary-blue">About Us</a>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="dropdown">
+                        <a href="#" class="nav-link text-primary-gray font-body font-medium hover:text-primary-blue flex items-center">
+                            Services
+                            <svg class="dropdown-arrow w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item group">
+                                <svg class="dropdown-icon text-primary-blue group-hover:text-primary-green" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <div>
+                                    <div class="font-medium">Speech Assessment</div>
+                                    <div class="text-xs text-primary-gray opacity-75">Comprehensive evaluation</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item group">
+                                <svg class="dropdown-icon text-primary-orange group-hover:text-primary-green" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/>
+                                </svg>
+                                <div>
+                                    <div class="font-medium">Voice Therapy</div>
+                                    <div class="text-xs text-primary-gray opacity-75">Voice improvement & care</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item group">
+                                <svg class="dropdown-icon text-primary-yellow group-hover:text-primary-green" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                                </svg>
+                                <div>
+                                    <div class="font-medium">Articulation Therapy</div>
+                                    <div class="text-xs text-primary-gray opacity-75">Clear speech sounds</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item group">
+                                <svg class="dropdown-icon text-primary-green group-hover:text-primary-blue" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                                <div>
+                                    <div class="font-medium">Language Development</div>
+                                    <div class="text-xs text-primary-gray opacity-75">Building communication skills</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item group">
+                                <svg class="dropdown-icon text-primary-blue group-hover:text-primary-orange" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                                </svg>
+                                <div>
+                                    <div class="font-medium">Adult Speech Therapy</div>
+                                    <div class="text-xs text-primary-gray opacity-75">Specialized adult care</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item group">
+                                <svg class="dropdown-icon text-primary-orange group-hover:text-primary-blue" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                                </svg>
+                                <div>
+                                    <div class="font-medium">Stuttering Treatment</div>
+                                    <div class="text-xs text-primary-gray opacity-75">Fluency improvement</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="nav-link text-primary-gray font-body font-medium hover:text-primary-blue">Programs</a>
+                    <a href="#" class="nav-link text-primary-gray font-body font-medium hover:text-primary-blue">Resources</a>
+                    <a href="#" class="nav-link text-primary-gray font-body font-medium hover:text-primary-blue">Contact</a>
+                </div>
+
+                <!-- CTA Button & Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hidden sm:inline-flex cta-button text-white font-body font-medium px-6 py-3 rounded-full shadow-lg">
+                        Book Session
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden hamburger" id="mobileMenuButton">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden mobile-menu bg-white bg-opacity-95 backdrop-blur-md" id="mobileMenu">
+                <div class="px-2 pt-2 pb-6 space-y-1">
+                    <a href="#" class="block px-4 py-3 text-primary-gray font-body font-medium hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Home</a>
+                    <a href="#" class="block px-4 py-3 text-primary-gray font-body font-medium hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">About Us</a>
+                    
+                    <!-- Mobile Services Dropdown -->
+                    <div class="mobile-dropdown">
+                        <button class="mobile-services-toggle w-full flex items-center justify-between px-4 py-3 text-primary-gray font-body font-medium hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">
+                            Services
+                            <svg class="mobile-dropdown-arrow w-4 h-4 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-services-menu max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                            <div class="pl-4 space-y-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-primary-gray font-body hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Speech Assessment</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-primary-gray font-body hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Voice Therapy</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-primary-gray font-body hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Articulation Therapy</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-primary-gray font-body hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Language Development</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-primary-gray font-body hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Adult Speech Therapy</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-primary-gray font-body hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Stuttering Treatment</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="block px-4 py-3 text-primary-gray font-body font-medium hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Programs</a>
+                    <a href="#" class="block px-4 py-3 text-primary-gray font-body font-medium hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Resources</a>
+                    <a href="#" class="block px-4 py-3 text-primary-gray font-body font-medium hover:text-primary-blue hover:bg-primary-cream rounded-lg transition-colors">Contact</a>
+                    
+                    <!-- Mobile CTA Button -->
+                    <div class="pt-4 px-4">
+                        <a href="#" class="block text-center cta-button text-white font-body font-medium px-6 py-3 rounded-full shadow-lg">
+                            Book Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center">
+            <h2 class="text-4xl font-heading font-bold text-primary-blue mb-4">Welcome to Talking Tales</h2>
+            <p class="text-xl font-body text-primary-gray max-w-3xl mx-auto">Professional speech therapy services to help you or your loved ones communicate with confidence. Our expert therapists are here to support your journey.</p>
+        </div>
+        
+        <!-- Color Palette Display -->
+        <div class="mt-16">
+            <h3 class="text-2xl font-heading font-bold text-primary-gray mb-8 text-center">Our Brand Colors</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-blue rounded-lg mx-auto mb-2 shadow-lg"></div>
+                    <p class="font-body text-sm text-primary-gray">Primary Blue</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-yellow rounded-lg mx-auto mb-2 shadow-lg"></div>
+                    <p class="font-body text-sm text-primary-gray">Primary Yellow</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-orange rounded-lg mx-auto mb-2 shadow-lg"></div>
+                    <p class="font-body text-sm text-primary-gray">Primary Orange</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-green rounded-lg mx-auto mb-2 shadow-lg"></div>
+                    <p class="font-body text-sm text-primary-gray">Primary Green</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-gray rounded-lg mx-auto mb-2 shadow-lg"></div>
+                    <p class="font-body text-sm text-primary-gray">Primary Gray</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-primary-cream rounded-lg mx-auto mb-2 shadow-lg border-2 border-primary-gray border-opacity-20"></div>
+                    <p class="font-body text-sm text-primary-gray">Primary Cream</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const hamburger = document.querySelector('.hamburger');
+
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('active');
+        });
+
+        // Mobile services dropdown functionality
+        const mobileServicesToggle = document.querySelector('.mobile-services-toggle');
+        const mobileServicesMenu = document.querySelector('.mobile-services-menu');
+        const mobileDropdownArrow = document.querySelector('.mobile-dropdown-arrow');
+
+        mobileServicesToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const isOpen = mobileServicesMenu.style.maxHeight && mobileServicesMenu.style.maxHeight !== '0px';
+            
+            if (isOpen) {
+                mobileServicesMenu.style.maxHeight = '0px';
+                mobileDropdownArrow.style.transform = 'rotate(0deg)';
+            } else {
+                mobileServicesMenu.style.maxHeight = mobileServicesMenu.scrollHeight + 'px';
+                mobileDropdownArrow.style.transform = 'rotate(180deg)';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a:not(.mobile-services-toggle)');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('active');
+                // Reset services dropdown
+                mobileServicesMenu.style.maxHeight = '0px';
+                mobileDropdownArrow.style.transform = 'rotate(0deg)';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.remove('open');
+                hamburger.classList.remove('active');
+                // Reset services dropdown
+                mobileServicesMenu.style.maxHeight = '0px';
+                mobileDropdownArrow.style.transform = 'rotate(0deg)';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const navbar = document.querySelector('nav');
+            
+            if (scrollTop > 100) {
+                navbar.classList.remove('bg-opacity-95');
+                navbar.classList.add('bg-opacity-100', 'shadow-xl');
+            } else {
+                navbar.classList.remove('bg-opacity-100', 'shadow-xl');
+                navbar.classList.add('bg-opacity-95');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Tales - Speech Therapy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom color variables */
+        :root {
+            --primary-blue: #3B82F6;
+            --primary-yellow: #F59E0B;
+            --primary-orange: #F97316;
+            --primary-green: #10B981;
+            --primary-gray: #374151;
+        }
+
+        /* Custom font classes */
+        .font-museo { font-family: 'Inter', sans-serif; }
+        .font-museo-rounded { font-family: 'Inter', sans-serif; font-weight: 600; }
+
+        
+        /* Navbar scroll effects */
+        #navbar {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #navbar.navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        #navbar.navbar-scrolled .nav-link span {
+            color: var(--primary-gray) !important;
+        }
+
+        #navbar.navbar-scrolled .nav-link:hover span {
+            color: var(--primary-blue) !important;
+        }
+
+        #navbar.navbar-scrolled h1 {
+            color: var(--primary-gray) !important;
+        }
+
+        #navbar.navbar-scrolled .group:hover h1 {
+            color: var(--primary-blue) !important;
+        }
+
+        #navbar.navbar-scrolled p {
+            color: rgba(55, 65, 81, 0.7) !important;
+        }
+
+        #navbar.navbar-scrolled .hamburger span {
+            background-color: var(--primary-gray) !important;
+        }
+
+        /* Mobile menu transitions */
+        .mobile-services-dropdown {
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+
+        .mobile-services-dropdown.open {
+            max-height: 300px;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Ensure mobile menu is properly positioned and visible */
+        #mobileMenu {
+            z-index: 9999 !important;
+        }
+
+        #mobileOverlay {
+            z-index: 9998 !important;
+        }
+
+        /* Debug mobile menu visibility */
+        @media (max-width: 1023px) {
+            #mobileMenu.show {
+                transform: translateX(0) !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            #mobileOverlay.show {
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+        }
+
+        /* Hamburger animation */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Demo content styles */
+        .demo-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        }
+
+        .content-section {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--primary-orange), var(--primary-yellow));
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-transparent backdrop-blur-sm border-b border-white/10 fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <!-- Logo Container with Elements -->
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-lg group-hover:bg-white/30">
+                            <!-- Exact logo elements -->
+                            <div class="grid grid-cols-2 gap-0.5 w-8 h-8">
+                                <!-- Top Left: Smiley -->
+                                <div class="relative">
+                                    <div class="flex space-x-0.5 mb-0.5">
+                                        <div class="w-0.5 h-0.5 bg-primary-blue rounded-full"></div>
+                                        <div class="w-0.5 h-0.5 bg-primary-blue rounded-full"></div>
+                                    </div>
+                                    <div class="w-3 h-1.5 bg-primary-blue rounded-full rounded-t-none"></div>
+                                </div>
+                                <!-- Top Right: Speech Bubble -->
+                                <div class="w-3 h-2.5 bg-primary-yellow rounded-full rounded-tr-lg rounded-br-none rounded-bl-lg rounded-tl-lg"></div>
+                                <!-- Bottom Left: Tulip -->
+                                <div class="relative">
+                                    <div class="w-3 h-3.5 bg-primary-orange rounded-full rounded-t-full relative">
+                                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-1 bg-white"></div>
+                                    </div>
+                                </div>
+                                <!-- Bottom Right: Heart -->
+                                <div class="relative">
+                                    <div class="w-3 h-2.5 bg-primary-green transform rotate-45 rounded-tl-full rounded-tr-full"></div>
+                                    <div class="absolute top-0 left-0.5 w-1.5 h-1.5 bg-primary-green rounded-full"></div>
+                                    <div class="absolute top-0 right-0.5 w-1.5 h-1.5 bg-primary-green rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating accent -->
+                        <div class="absolute -top-1 -right-1 w-3 h-3 bg-primary-yellow rounded-full opacity-80 group-hover:animate-bounce"></div>
+                    </div>
+                    
+                    <!-- Brand Text -->
+                    <div class="hidden sm:block">
+                        <h1 class="font-museo-rounded text-2xl font-black text-white group-hover:text-primary-yellow transition-colors duration-300">
+                            Talking Tales
+                        </h1>
+                        <p class="font-museo text-xs text-white/70 -mt-1">Speech Therapy</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-blue">Home</span>
+                    </a>
+                    
+                    <div class="relative group">
+                        <a href="#" class="nav-link group flex items-center space-x-2 px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                            <span class="font-museo font-medium text-white hover:text-primary-yellow">Services</span>
+                            <div class="w-2 h-2 border-r-2 border-b-2 border-white/70 transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-300"></div>
+                        </a>
+                        
+                        <!-- Services Dropdown -->
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl border border-white/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                            <div class="p-4 space-y-3">
+                                <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-blue/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-blue/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-blue rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-blue">Pediatric Therapy</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">For children 2-18 years</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-yellow/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-yellow/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-yellow rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-yellow">Adult Therapy</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">Professional support</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-orange/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-orange/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-orange rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-orange">Language Development</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">Growth focused</div>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-green/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-green/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-green rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-green">Online Sessions</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">From home comfort</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-orange">About</span>
+                    </a>
+                    
+                    <a href="#" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-green">Success Stories</span>
+                    </a>
+                    
+                    <a href="#" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-blue">Contact</span>
+                    </a>
+                </div>
+
+                <!-- CTA Button & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- CTA Button -->
+                    <button class="hidden md:flex items-center space-x-2 bg-gradient-to-r from-primary-blue to-primary-green hover:from-primary-green hover:to-primary-blue text-white font-museo-rounded font-bold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+                        <span>Book Session</span>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="lg:hidden relative w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 border border-white/20" id="mobileMenuBtn">
+                        <div class="hamburger">
+                            <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300"></span>
+                            <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300"></span>
+                            <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40" id="mobileOverlay"></div>
+        
+        <!-- Mobile Menu Content -->
+        <div class="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gray-900 shadow-2xl transform translate-x-full transition-all duration-300 z-50 border-l border-gray-700 overflow-y-auto" id="mobileMenu" style="transform: translateX(100%);">
+            <div class="p-6 h-full">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center border border-gray-700">
+                            <div class="grid grid-cols-2 gap-0.5 w-6 h-6">
+                                <div class="w-2.5 h-2.5 bg-primary-blue rounded-full"></div>
+                                <div class="w-2.5 h-2.5 bg-primary-yellow rounded-lg"></div>
+                                <div class="w-2.5 h-2.5 bg-primary-orange rounded-full"></div>
+                                <div class="w-2.5 h-2.5 bg-primary-green rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="font-museo-rounded text-lg font-bold text-white">Talking Tales</h2>
+                            <p class="font-museo text-xs text-gray-400">Speech Therapy</p>
+                        </div>
+                    </div>
+                    <button class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-300" id="closeMobileMenu">
+                        <div class="w-4 h-4 relative">
+                            <div class="absolute w-full h-0.5 bg-gray-300 transform rotate-45 top-1.5"></div>
+                            <div class="absolute w-full h-0.5 bg-gray-300 transform -rotate-45 top-1.5"></div>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="space-y-2">
+                    <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">Home</span>
+                    </a>
+                    
+                    <!-- Services Dropdown Mobile -->
+                    <div class="relative">
+                        <button class="mobile-services-toggle w-full flex items-center justify-between p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300">
+                            <span class="font-museo font-semibold text-white">Services</span>
+                            <svg class="w-4 h-4 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="mobile-services-dropdown pl-6 pr-4 overflow-hidden max-h-0 transition-all duration-300">
+                            <div class="py-2 space-y-2">
+                                <a href="#" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-blue rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-blue">Pediatric Therapy</div>
+                                            <div class="font-museo text-xs text-gray-400">For children 2-18 years</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-yellow rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-yellow">Adult Therapy</div>
+                                            <div class="font-museo text-xs text-gray-400">Professional support</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-orange rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-orange">Language Development</div>
+                                            <div class="font-museo text-xs text-gray-400">Growth focused</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-green rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-green">Online Sessions</div>
+                                            <div class="font-museo text-xs text-gray-400">From home comfort</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">About</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">Success Stories</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">Contact</span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                    <button class="w-full bg-gradient-to-r from-primary-blue to-primary-green text-white font-museo-rounded font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                        Book Your Session
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Content -->
+    <section class="demo-section">
+        <div class="text-center text-white">
+            <h1 class="text-6xl font-bold mb-4">Talking Tales</h1>
+            <p class="text-2xl opacity-90">Speech Therapy Services</p>
+            <p class="text-lg opacity-70 mt-4">Scroll down to see the navbar background change</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="text-center text-white">
+            <h2 class="text-4xl font-bold mb-4">Professional Speech Therapy</h2>
+            <p class="text-xl opacity-90">Helping people communicate with confidence</p>
+        </div>
+    </section>
+
+    <section class="h-screen bg-gray-100 flex items-center justify-center">
+        <div class="text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+            <p class="text-xl text-gray-600">Specialized therapy for all ages</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileServicesToggle = document.querySelector('.mobile-services-toggle');
+            const mobileServicesDropdown = document.querySelector('.mobile-services-dropdown');
+
+            function openMobileMenu() {
+                console.log('Opening mobile menu'); // Debug log
+                mobileMenu.classList.add('show');
+                mobileOverlay.classList.add('show');
+                mobileMenu.style.transform = 'translateX(0)';
+                mobileOverlay.style.opacity = '1';
+                mobileOverlay.style.visibility = 'visible';
+                hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenuFunc() {
+                console.log('Closing mobile menu'); // Debug log
+                mobileMenu.classList.remove('show');
+                mobileOverlay.classList.remove('show');
+                mobileMenu.style.transform = 'translateX(100%)';
+                mobileOverlay.style.opacity = '0';
+                mobileOverlay.style.visibility = 'hidden';
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // Close mobile services dropdown when closing menu
+                if (mobileServicesDropdown) {
+                    mobileServicesDropdown.classList.remove('open');
+                    if (mobileServicesToggle) {
+                        mobileServicesToggle.querySelector('svg').style.transform = 'rotate(0deg)';
+                    }
+                }
+            }
+
+            // Mobile services dropdown toggle
+            if (mobileServicesToggle && mobileServicesDropdown) {
+                mobileServicesToggle.addEventListener('click', function() {
+                    const isOpen = mobileServicesDropdown.classList.contains('open');
+                    const arrow = this.querySelector('svg');
+                    
+                    if (isOpen) {
+                        mobileServicesDropdown.classList.remove('open');
+                        arrow.style.transform = 'rotate(0deg)';
+                    } else {
+                        mobileServicesDropdown.classList.add('open');
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                });
+            }
+
+            // Event listeners
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openMobileMenu();
+                });
+            }
+
+            if (closeMobileMenu) {
+                closeMobileMenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeMobileMenuFunc();
+                });
+            }
+
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', closeMobileMenuFunc);
+            }
+
+            // Close mobile menu when clicking on nav links
+            document.querySelectorAll('.mobile-nav-item').forEach(link => {
+                link.addEventListener('click', closeMobileMenuFunc);
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+
+            // Close mobile menu on window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) {
+                    closeMobileMenuFunc();
+                }
+            });
+
+            // Logo click animation
+            const logoElement = document.querySelector('.group.cursor-pointer');
+            if (logoElement) {
+                logoElement.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const logo = e.currentTarget.querySelector('.w-12.h-12');
+                    if (logo) {
+                        logo.style.transform = 'scale(1.2) rotate(10deg)';
+                        setTimeout(() => {
+                            logo.style.transform = 'scale(1) rotate(0deg)';
+                        }, 300);
+                    }
+                });
+            }
+
+            // Test mobile menu visibility on load (for debugging)
+            console.log('Mobile menu element:', mobileMenu);
+            console.log('Mobile menu button:', mobileMenuBtn);
+        });
+    </script>
+</body>
+</html>

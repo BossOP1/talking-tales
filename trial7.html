@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Tales - Elegant Stats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Museo+Sans+Rounded:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0B87C5',
+                        'primary-yellow': '#FFC73C',
+                        'primary-orange': '#F36E3B',
+                        'primary-green': '#3DD288',
+                        'primary-gray': '#4A4A4A',
+                        'primary-cream': '#F9F0E5'
+                    },
+                    fontFamily: {
+                        'museo-rounded': ['Museo Sans Rounded', 'sans-serif'],
+                        'museo': ['Source Sans Pro', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<section class="bg-primary-cream/30 py-10 md:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Subtle background elements -->
+    <div class="absolute top-8 right-8 w-6 h-6 bg-primary-blue/10 rounded-full animate-pulse"></div>
+    <div class="absolute bottom-8 left-8 w-4 h-4 bg-primary-green/10 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+
+    <div class="max-w-5xl mx-auto">
+        
+        <!-- Clean Header -->
+        <div class="text-center mb-10">
+            <h2 class="font-museo-rounded text-3xl md:text-5xl font-black text-primary-gray mb-3">
+                Our Story in <span class="text-primary-blue">Numbers</span>
+            </h2>
+            <p class="font-museo text-primary-gray/70">Real impact, real families, real results</p>
+        </div>
+
+        <!-- Elegant Stats Row -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8">
+            
+            <!-- Stat 1: Happy Clients -->
+            <div class="stat-card group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:bg-white/80 hover:scale-105 transition-all duration-300 hover:shadow-lg text-center relative">
+                
+                <!-- Icon -->
+                <div class="mb-4">
+                    <div class="w-14 h-14 bg-primary-blue rounded-full mx-auto flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <!-- Smiley Face -->
+                        <div class="flex space-x-1.5 mb-1">
+                            <div class="w-2.5 h-2.5 bg-white rounded-full animate-blink"></div>
+                            <div class="w-2.5 h-2.5 bg-white rounded-full animate-blink"></div>
+                        </div>
+                        <div class="absolute w-5 h-2.5 border-b-2 border-white rounded-full"></div>
+                    </div>
+                </div>
+                
+                <div class="font-museo-rounded text-3xl font-black text-primary-gray mb-2" id="clients">0</div>
+                <div class="text-primary-blue font-museo font-semibold text-sm">Happy Families</div>
+                <div class="text-primary-gray/60 font-museo text-xs mt-1">Transformed Lives</div>
+            </div>
+
+            <!-- Stat 2: Years Experience -->
+            <div class="stat-card group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:bg-white/80 hover:scale-105 transition-all duration-300 hover:shadow-lg text-center relative">
+                
+                <!-- Icon -->
+                <div class="mb-4 flex justify-center">
+                    <div class="relative group-hover:scale-110 transition-transform duration-300">
+                        <div class="w-14 h-10 bg-primary-yellow rounded-2xl rounded-br-lg shadow-md flex items-center justify-center">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                <div class="w-2 h-2 bg-white rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                                <div class="w-2 h-2 bg-white rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-1 right-2.5 w-2.5 h-2.5 bg-primary-yellow transform rotate-45"></div>
+                    </div>
+                </div>
+                
+                <div class="font-museo-rounded text-3xl font-black text-primary-gray mb-2" id="years">0</div>
+                <div class="text-primary-yellow font-museo font-semibold text-sm">Years of Excellence</div>
+                <div class="text-primary-gray/60 font-museo text-xs mt-1">Expert Knowledge</div>
+            </div>
+
+            <!-- Stat 3: Success Rate -->
+            <div class="stat-card group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:bg-white/80 hover:scale-105 transition-all duration-300 hover:shadow-lg text-center relative">
+                
+                <!-- Icon -->
+                <div class="mb-4">
+                    <div class="w-14 h-16 bg-primary-orange rounded-full rounded-tl-3xl rounded-br-3xl mx-auto flex items-center justify-center shadow-md group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                        <div class="w-7 h-12 bg-white rounded-full rounded-tl-2xl rounded-br-2xl opacity-90"></div>
+                    </div>
+                </div>
+                
+                <div class="font-museo-rounded text-3xl font-black text-primary-gray mb-2">
+                    <span id="success">0</span><span class="text-lg">%</span>
+                </div>
+                <div class="text-primary-orange font-museo font-semibold text-sm">Success Rate</div>
+                <div class="text-primary-gray/60 font-museo text-xs mt-1">Proven Results</div>
+            </div>
+
+            <!-- Stat 4: Client Rating -->
+            <div class="stat-card group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:bg-white/80 hover:scale-105 transition-all duration-300 hover:shadow-lg text-center relative">
+                
+                <!-- Icon -->
+                <div class="mb-4 flex justify-center">
+                    <div class="relative group-hover:scale-110 transition-transform duration-300">
+                        <div class="w-14 h-12 bg-primary-green rounded-full shadow-md flex items-center justify-center">
+                            <div class="relative">
+                                <div class="w-6 h-6 bg-white rounded-full"></div>
+                                <div class="absolute -top-1 left-1.5 w-5 h-3 bg-white rounded-t-full transform -rotate-45"></div>
+                                <div class="absolute -top-1 right-1.5 w-5 h-3 bg-white rounded-t-full transform rotate-45"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="font-museo-rounded text-3xl font-black text-primary-gray mb-2">
+                    <span id="rating">0</span><span class="text-lg">/5</span>
+                </div>
+                <div class="text-primary-green font-museo font-semibold text-sm">Client Rating</div>
+                <div class="text-primary-gray/60 font-museo text-xs mt-1">Love & Trust</div>
+            </div>
+        </div>
+
+        <!-- Clean CTA -->
+        <div class="text-center">
+            <button class="bg-primary-blue hover:bg-primary-blue/90 text-white font-museo-rounded font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center space-x-3 mx-auto">
+                <span>Start Your Success Story</span>
+                <div class="relative">
+                    <div class="w-6 h-4 bg-white rounded-lg rounded-br-sm flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 bg-primary-blue rounded-full"></div>
+                    </div>
+                    <div class="absolute -bottom-0.5 right-1 w-2 h-2 bg-white transform rotate-45"></div>
+                </div>
+            </button>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes blink {
+        0%, 90%, 100% { transform: scaleY(1); }
+        95% { transform: scaleY(0.1); }
+    }
+    
+    .animate-blink {
+        animation: blink 4s infinite;
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .stat-card {
+        animation: slideUp 0.6s ease-out forwards;
+    }
+    
+    .stat-card:nth-child(1) { animation-delay: 0.1s; }
+    .stat-card:nth-child(2) { animation-delay: 0.2s; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    .stat-card:nth-child(4) { animation-delay: 0.4s; }
+</style>
+
+<script>
+    // Clean counter animation
+    function animateCounter(elementId, targetValue, duration = 1500) {
+        const element = document.getElementById(elementId);
+        const increment = targetValue / (duration / 16);
+        let currentValue = 0;
+        
+        const updateCounter = () => {
+            currentValue += increment;
+            if (currentValue < targetValue) {
+                element.textContent = Math.floor(currentValue);
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = targetValue;
+                // Simple completion effect
+                element.style.transform = 'scale(1.05)';
+                setTimeout(() => element.style.transform = 'scale(1)', 200);
+            }
+        };
+        
+        updateCounter();
+    }
+
+    // Simple live updates
+    function startLiveUpdates() {
+        const stats = {
+            liveClients: 34,
+            liveSessions: 127,
+            liveGoals: 89,
+            liveProgress: 156
+        };
+
+        // Initial animation
+        Object.keys(stats).forEach((statId, index) => {
+            setTimeout(() => animateCounter(statId, stats[statId], 1000), index * 100);
+        });
+
+        // Periodic updates
+        setInterval(() => {
+            Object.keys(stats).forEach(statId => {
+                if (Math.random() > 0.8) {
+                    stats[statId] += Math.random() > 0.5 ? 1 : -1;
+                    stats[statId] = Math.max(0, stats[statId]);
+                    
+                    const element = document.getElementById(statId);
+                    element.textContent = stats[statId];
+                    element.style.color = '#3DD288';
+                    
+                    setTimeout(() => {
+                        element.style.color = '';
+                    }, 500);
+                }
+            });
+        }, 5000);
+    }
+
+    // Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate main stats
+                setTimeout(() => animateCounter('clients', 850), 300);
+                setTimeout(() => animateCounter('years', 15), 500);
+                setTimeout(() => animateCounter('success', 98), 700);
+                setTimeout(() => animateCounter('rating', 4.9), 900);
+                
+                // Start live updates
+                setTimeout(startLiveUpdates, 1200);
+                
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        observer.observe(document.querySelector('section'));
+    });
+</script>
+</html>

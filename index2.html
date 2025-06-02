@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Tales - Professional Speech Therapy Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom color variables */
+        :root {
+            --primary-blue: #3B82F6;
+            --primary-yellow: #F59E0B;
+            --primary-orange: #F97316;
+            --primary-green: #10B981;
+            --primary-gray: #374151;
+        }
+
+        /* Custom font classes */
+        .font-museo { font-family: 'Inter', sans-serif; }
+        .font-museo-rounded { font-family: 'Inter', sans-serif; font-weight: 600; }
+
+        /* Custom color classes */
+        .text-primary-blue { color: var(--primary-blue); }
+        .text-primary-yellow { color: var(--primary-yellow); }
+        .text-primary-orange { color: var(--primary-orange); }
+        .text-primary-green { color: var(--primary-green); }
+        .text-primary-gray { color: var(--primary-gray); }
+        
+        .bg-primary-blue { background-color: var(--primary-blue); }
+        .bg-primary-yellow { background-color: var(--primary-yellow); }
+        .bg-primary-orange { background-color: var(--primary-orange); }
+        .bg-primary-green { background-color: var(--primary-green); }
+
+        .bg-primary-blue\/10 { background-color: rgba(59, 130, 246, 0.1); }
+        .bg-primary-yellow\/10 { background-color: rgba(245, 158, 11, 0.1); }
+        .bg-primary-orange\/10 { background-color: rgba(249, 115, 22, 0.1); }
+        .bg-primary-green\/10 { background-color: rgba(16, 185, 129, 0.1); }
+
+        .bg-primary-blue\/5 { background-color: rgba(59, 130, 246, 0.05); }
+        .bg-primary-yellow\/5 { background-color: rgba(245, 158, 11, 0.05); }
+        .bg-primary-orange\/5 { background-color: rgba(249, 115, 22, 0.05); }
+        .bg-primary-green\/5 { background-color: rgba(16, 185, 129, 0.05); }
+
+        .hover\:text-primary-blue:hover { color: var(--primary-blue); }
+        .hover\:text-primary-yellow:hover { color: var(--primary-yellow); }
+        .hover\:text-primary-orange:hover { color: var(--primary-orange); }
+        .hover\:text-primary-green:hover { color: var(--primary-green); }
+
+        .group-hover\/item\:text-primary-blue { color: var(--primary-blue); }
+        .group-hover\/item\:text-primary-yellow { color: var(--primary-yellow); }
+        .group-hover\/item\:text-primary-orange { color: var(--primary-orange); }
+        .group-hover\/item\:text-primary-green { color: var(--primary-green); }
+
+        /* Navbar scroll effects */
+        #navbar {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 9997 !important;
+        }
+
+        #navbar.navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        #navbar.navbar-scrolled .nav-link span {
+            color: var(--primary-gray) !important;
+        }
+
+        #navbar.navbar-scrolled .nav-link:hover span {
+            color: var(--primary-blue) !important;
+        }
+
+        #navbar.navbar-scrolled h1 {
+            color: var(--primary-gray) !important;
+        }
+
+        #navbar.navbar-scrolled .group:hover h1 {
+            color: var(--primary-blue) !important;
+        }
+
+        #navbar.navbar-scrolled p {
+            color: rgba(55, 65, 81, 0.7) !important;
+        }
+
+        #navbar.navbar-scrolled .hamburger span {
+            background-color: var(--primary-gray) !important;
+        }
+
+        #navbar.navbar-scrolled .mobile-menu-button {
+            background-color: rgba(55, 65, 81, 0.1) !important;
+            border-color: rgba(55, 65, 81, 0.2) !important;
+        }
+
+        #navbar.navbar-scrolled .mobile-menu-button:hover {
+            background-color: rgba(55, 65, 81, 0.2) !important;
+        }
+
+        /* Services dropdown arrow visibility */
+        #navbar .services-arrow {
+            border-color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        #navbar.navbar-scrolled .services-arrow {
+            border-color: var(--primary-gray) !important;
+        }
+
+        #navbar.navbar-scrolled .nav-link:hover .services-arrow {
+            border-color: var(--primary-blue) !important;
+        }
+
+        /* Mobile menu transitions */
+        .mobile-services-dropdown {
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+        }
+
+        .mobile-services-dropdown.open {
+            max-height: 300px;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Ensure mobile menu is properly positioned and visible */
+        #mobileMenu {
+            z-index: 9999 !important;
+            position: fixed !important;
+        }
+
+        #mobileOverlay {
+            z-index: 9998 !important;
+            position: fixed !important;
+        }
+
+        /* Force mobile menu visibility when open */
+        #mobileMenu.show {
+            transform: translateX(0) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        #mobileOverlay.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* Hamburger animation */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-in-up {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        /* Gradient backgrounds */
+        .gradient-bg-1 {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        }
+
+        .gradient-bg-2 {
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-yellow));
+        }
+
+        .gradient-bg-3 {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero section styling */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(16, 185, 129, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1)"/><stop offset="100%" style="stop-color:rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Stats animation */
+        .stats-counter {
+            font-feature-settings: 'tnum';
+        }
+    </style>
+</head>
+<body class="bg-white overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="bg-transparent backdrop-blur-sm border-b border-white/10 fixed top-0 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo Section -->
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <!-- Logo Container with Elements -->
+                    <div class="relative">
+                        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-lg group-hover:bg-white/30">
+                            <!-- Exact logo elements -->
+                            <div class="grid grid-cols-2 gap-0.5 w-8 h-8">
+                                <!-- Top Left: Smiley -->
+                                <div class="relative">
+                                    <div class="flex space-x-0.5 mb-0.5">
+                                        <div class="w-0.5 h-0.5 bg-primary-blue rounded-full"></div>
+                                        <div class="w-0.5 h-0.5 bg-primary-blue rounded-full"></div>
+                                    </div>
+                                    <div class="w-3 h-1.5 bg-primary-blue rounded-full rounded-t-none"></div>
+                                </div>
+                                <!-- Top Right: Speech Bubble -->
+                                <div class="w-3 h-2.5 bg-primary-yellow rounded-full rounded-tr-lg rounded-br-none rounded-bl-lg rounded-tl-lg"></div>
+                                <!-- Bottom Left: Tulip -->
+                                <div class="relative">
+                                    <div class="w-3 h-3.5 bg-primary-orange rounded-full rounded-t-full relative">
+                                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-1 bg-white"></div>
+                                    </div>
+                                </div>
+                                <!-- Bottom Right: Heart -->
+                                <div class="relative">
+                                    <div class="w-3 h-2.5 bg-primary-green transform rotate-45 rounded-tl-full rounded-tr-full"></div>
+                                    <div class="absolute top-0 left-0.5 w-1.5 h-1.5 bg-primary-green rounded-full"></div>
+                                    <div class="absolute top-0 right-0.5 w-1.5 h-1.5 bg-primary-green rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating accent -->
+                        <div class="absolute -top-1 -right-1 w-3 h-3 bg-primary-yellow rounded-full opacity-80 group-hover:animate-bounce"></div>
+                    </div>
+                    
+                    <!-- Brand Text -->
+                    <div class="hidden sm:block">
+                        <h1 class="font-museo-rounded text-2xl font-black text-white group-hover:text-primary-yellow transition-colors duration-300">
+                            Talking Tales
+                        </h1>
+                        <p class="font-museo text-xs text-white/70 -mt-1">Speech Therapy</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-blue">Home</span>
+                    </a>
+                    
+                    <div class="relative group">
+                        <a href="#services" class="nav-link group flex items-center space-x-2 px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                            <span class="font-museo font-medium text-white hover:text-primary-yellow">Services</span>
+                            <div class="services-arrow w-2 h-2 border-r-2 border-b-2 border-white/70 transform rotate-45 group-hover:rotate-[225deg] transition-transform duration-300"></div>
+                        </a>
+                        
+                        <!-- Services Dropdown -->
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl border border-white/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                            <div class="p-4 space-y-3">
+                                <a href="#services" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-blue/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-blue/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-blue rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-blue">Pediatric Therapy</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">For children 2-18 years</div>
+                                    </div>
+                                </a>
+                                <a href="#services" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-yellow/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-yellow/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-yellow rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-yellow">Adult Therapy</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">Professional support</div>
+                                    </div>
+                                </a>
+                                <a href="#services" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-orange/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-orange/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-orange rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-orange">Language Development</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">Growth focused</div>
+                                    </div>
+                                </a>
+                                <a href="#services" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-green/5 transition-all duration-300 group/item">
+                                    <div class="w-8 h-8 bg-primary-green/10 rounded-full flex items-center justify-center">
+                                        <div class="w-3 h-3 bg-primary-green rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-green">Online Sessions</div>
+                                        <div class="font-museo text-xs text-primary-gray/60">From home comfort</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#about" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-orange">About</span>
+                    </a>
+                    
+                    <a href="#stories" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-green">Success Stories</span>
+                    </a>
+                    
+                    <a href="#contact" class="nav-link group px-4 py-2 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        <span class="font-museo font-medium text-white hover:text-primary-blue">Contact</span>
+                    </a>
+                </div>
+
+                <!-- CTA Button & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- CTA Button -->
+                    <button class="hidden md:flex items-center space-x-2 bg-gradient-to-r from-primary-blue to-primary-green hover:from-primary-green hover:to-primary-blue text-white font-museo-rounded font-bold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+                        <span>Book Session</span>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="mobile-menu-button lg:hidden relative w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300 border border-white/20" id="mobileMenuBtn">
+                        <div class="hamburger">
+                            <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300"></span>
+                            <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all duration-300"></span>
+                            <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300" id="mobileOverlay"></div>
+        
+        <!-- Mobile Menu Content -->
+        <div class="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gray-900 shadow-2xl transform translate-x-full transition-all duration-300 border-l border-gray-700 overflow-y-auto" id="mobileMenu" style="transform: translateX(100%); z-index: 9999;">
+            <div class="p-6 h-full">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center border border-gray-700">
+                            <div class="grid grid-cols-2 gap-0.5 w-6 h-6">
+                                <div class="w-2.5 h-2.5 bg-primary-blue rounded-full"></div>
+                                <div class="w-2.5 h-2.5 bg-primary-yellow rounded-lg"></div>
+                                <div class="w-2.5 h-2.5 bg-primary-orange rounded-full"></div>
+                                <div class="w-2.5 h-2.5 bg-primary-green rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="font-museo-rounded text-lg font-bold text-white">Talking Tales</h2>
+                            <p class="font-museo text-xs text-gray-400">Speech Therapy</p>
+                        </div>
+                    </div>
+                    <button class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-300" id="closeMobileMenu">
+                        <div class="w-4 h-4 relative">
+                            <div class="absolute w-full h-0.5 bg-gray-300 transform rotate-45 top-1.5"></div>
+                            <div class="absolute w-full h-0.5 bg-gray-300 transform -rotate-45 top-1.5"></div>
+                        </div>
+                    </button>
+                </div>
+                
+                <div class="space-y-2">
+                    <a href="#home" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">Home</span>
+                    </a>
+                    
+                    <!-- Services Dropdown Mobile -->
+                    <div class="relative">
+                        <button class="mobile-services-toggle w-full flex items-center justify-between p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300">
+                            <span class="font-museo font-semibold text-white">Services</span>
+                            <svg class="w-4 h-4 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="mobile-services-dropdown pl-6 pr-4 overflow-hidden max-h-0 transition-all duration-300">
+                            <div class="py-2 space-y-2">
+                                <a href="#services" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-blue rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-blue">Pediatric Therapy</div>
+                                            <div class="font-museo text-xs text-gray-400">For children 2-18 years</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#services" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-yellow rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-yellow">Adult Therapy</div>
+                                            <div class="font-museo text-xs text-gray-400">Professional support</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#services" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-orange rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-orange">Language Development</div>
+                                            <div class="font-museo text-xs text-gray-400">Growth focused</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#services" class="mobile-nav-item block p-3 rounded-xl hover:bg-gray-800 transition-all duration-300 group/item">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center">
+                                            <div class="w-2 h-2 bg-primary-green rounded-full"></div>
+                                        </div>
+                                        <div>
+                                            <div class="font-museo text-sm text-white group-hover/item:text-primary-green">Online Sessions</div>
+                                            <div class="font-museo text-xs text-gray-400">From home comfort</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#about" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">About</span>
+                    </a>
+                    <a href="#stories" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">Success Stories</span>
+                    </a>
+                    <a href="#contact" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-800 transition-all duration-300 group">
+                        <span class="font-museo font-semibold text-white">Contact</span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                    <button class="w-full bg-gradient-to-r from-primary-blue to-primary-green text-white font-museo-rounded font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                        Book Your Session
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section flex items-center justify-center min-h-screen relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/90 via-blue-500/80 to-green-500/90"></div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl float-animation"></div>
+        <div class="absolute top-40 right-20 w-32 h-32 bg-yellow-400/20 rounded-full blur-2xl float-animation" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-40 left-20 w-24 h-24 bg-orange-400/20 rounded-full blur-xl float-animation" style="animation-delay: 4s;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="slide-in-up">
+                <h1 class="font-museo-rounded text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
+                    Empowering
+                    <span class="text-primary-yellow">Voices</span>,<br>
+                    Building
+                    <span class="text-primary-green">Confidence</span>
+                </h1>
+                
+                <p class="font-museo text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Professional speech therapy services designed to help individuals of all ages communicate with clarity and confidence. Transform your communication journey today.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <button class="bg-primary-yellow hover:bg-yellow-500 text-gray-900 font-museo-rounded font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl text-lg">
+                        Start Your Journey
+                    </button>
+                    <button class="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-museo-rounded font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg">
+                        Learn More
+                    </button>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-white/80">
+                    <div class="text-center">
+                        <div class="font-museo-rounded text-3xl font-bold text-primary-yellow mb-2">500+</div>
+                        <div class="font-museo text-sm">Success Stories</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="font-museo-rounded text-3xl font-bold text-primary-green mb-2">15+</div>
+                        <div class="font-museo text-sm">Years Experience</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="font-museo-rounded text-3xl font-bold text-primary-orange mb-2">98%</div>
+                        <div class="font-museo text-sm">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-museo-rounded text-4xl md:text-5xl font-bold text-primary-gray mb-6">
+                    Comprehensive Speech Therapy Services
+                </h2>
+                <p class="font-museo text-xl text-gray-600 max-w-3xl mx-auto">
+                    Tailored therapy programs designed to meet individual needs and foster communication excellence across all age groups.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Pediatric Therapy -->
+                <div class="card-hover bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-primary-blue/10 rounded-2xl flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-primary-blue rounded-full"></div>
+                    </div>
+                    <h3 class="font-museo-rounded text-xl font-bold text-primary-gray mb-4">Pediatric Therapy</h3>
+                    <p class="font-museo text-gray-600 mb-6">Specialized programs for children ages 2-18, focusing on speech development, articulation, and language skills.</p>
+                    <ul class="font-museo text-sm text-gray-500 space-y-2">
+                        <li>• Speech sound disorders</li>
+                        <li>• Language development</li>
+                        <li>• Fluency therapy</li>
+                        <li>• Social communication</li>
+                    </ul>
+                </div>
+                
+                <!-- Adult Therapy -->
+                <div class="card-hover bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-primary-yellow/10 rounded-2xl flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-primary-yellow rounded-full"></div>
+                    </div>
+                    <h3 class="font-museo-rounded text-xl font-bold text-primary-gray mb-4">Adult Therapy</h3>
+                    <p class="font-museo text-gray-600 mb-6">Professional support for adults seeking to improve communication skills for personal and career advancement.</p>
+                    <ul class="font-museo text-sm text-gray-500 space-y-2">
+                        <li>• Accent modification</li>
+                        <li>• Voice therapy</li>
+                        <li>• Professional communication</li>
+                        <li>• Confidence building</li>
+                    </ul>
+                </div>
+                
+                <!-- Language Development -->
+                <div class="card-hover bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-primary-orange/10 rounded-2xl flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-primary-orange rounded-full"></div>
+                    </div>
+                    <h3 class="font-museo-rounded text-xl font-bold text-primary-gray mb-4">Language Development</h3>
+                    <p class="font-museo text-gray-600 mb-6">Comprehensive programs to enhance vocabulary, grammar, and overall language comprehension abilities.</p>
+                    <ul class="font-museo text-sm text-gray-500 space-y-2">
+                        <li>• Vocabulary expansion</li>
+                        <li>• Grammar skills</li>
+                        <li>• Reading comprehension</li>
+                        <li>• Writing support</li>
+                    </ul>
+                </div>
+                
+                <!-- Online Sessions -->
+                <div class="card-hover bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-primary-green/10 rounded-2xl flex items-center justify-center mb-6">
+                        <div class="w-8 h-8 bg-primary-green rounded-full"></div>
+                    </div>
+                    <h3 class="font-museo-rounded text-xl font-bold text-primary-gray mb-4">Online Sessions</h3>
+                    <p class="font-museo text-gray-600 mb-6">Convenient virtual therapy sessions that bring professional speech therapy to the comfort of your home.</p>
+                    <ul class="font-museo text-sm text-gray-500 space-y-2">
+                        <li>• Flexible scheduling</li>
+                        <li>• Interactive tools</li>
+                        <li>• Home practice support</li>
+                        <li>• Progress tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-museo-rounded text-4xl md:text-5xl font-bold text-primary-gray mb-8">
+                        Your Journey to
+                        <span class="text-primary-blue">Clear Communication</span>
+                        Starts Here
+                    </h2>
+                    
+                    <div class="space-y-6 font-museo text-lg text-gray-600 leading-relaxed">
+                        <p>
+                            At Talking Tales, we believe every voice deserves to be heard clearly and confidently. Our team of certified speech-language pathologists brings over 15 years of combined experience in helping individuals overcome communication challenges.
+                        </p>
+                        
+                        <p>
+                            We use evidence-based therapy techniques combined with innovative technology to create personalized treatment plans that deliver real results. Our warm, supportive environment encourages growth and celebrates every milestone along your communication journey.
+                        </p>
+                    </div>
+                    
+                    <!-- Key Features -->
+                    <div class="mt-12 space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-6 h-6 bg-primary-green rounded-full flex-shrink-0"></div>
+                            <span class="font-museo font-semibold text-gray-700">Certified Speech-Language Pathologists</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-6 h-6 bg-primary-blue rounded-full flex-shrink-0"></div>
+                            <span class="font-museo font-semibold text-gray-700">Evidence-Based Treatment Methods</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-6 h-6 bg-primary-orange rounded-full flex-shrink-0"></div>
+                            <span class="font-museo font-semibold text-gray-700">Personalized Therapy Plans</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-6 h-6 bg-primary-yellow rounded-full flex-shrink-0"></div>
+                            <span class="font-museo font-semibold text-gray-700">Family-Centered Approach</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <!-- Main Image Placeholder -->
+                    <div class="relative bg-gradient-to-br from-primary-blue to-primary-green rounded-3xl p-8 h-96 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <div class="w-24 h-24 bg-white/20 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                                <div class="w-12 h-12 bg-white rounded-xl"></div>
+                            </div>
+                            <h3 class="font-museo-rounded text-2xl font-bold mb-2">Expert Care</h3>
+                            <p class="font-museo text-white/80">Professional therapy in a supportive environment</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Stats -->
+                    <div class="absolute -top-6 -right-6 bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="text-center">
+                            <div class="font-museo-rounded text-2xl font-bold text-primary-green mb-1">500+</div>
+                            <div class="font-museo text-sm text-gray-600">Happy Clients</div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-lg">
+                        <div class="text-center">
+                            <div class="font-museo-rounded text-2xl font-bold text-primary-orange mb-1">15+</div>
+                            <div class="font-museo text-sm text-gray-600">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="stories" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-museo-rounded text-4xl md:text-5xl font-bold text-primary-gray mb-6">
+                    Real Stories, Real Results
+                </h2>
+                <p class="font-museo text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover how our personalized speech therapy programs have transformed lives and built lasting confidence.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="card-hover bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center text-white font-bold">S</div>
+                        <div class="ml-4">
+                            <h4 class="font-museo-rounded font-bold text-gray-800">Sarah M.</h4>
+                            <p class="font-museo text-sm text-gray-500">Parent of 6-year-old</p>
+                        </div>
+                    </div>
+                    <p class="font-museo text-gray-600 italic mb-6">
+                        "The transformation in my daughter's speech has been incredible. She went from being shy and hesitant to speaking confidently in class. The team at Talking Tales made therapy fun and engaging."
+                    </p>
+                    <div class="flex text-primary-yellow">
+                        ★★★★★
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="card-hover bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white font-bold">M</div>
+                        <div class="ml-4">
+                            <h4 class="font-museo-rounded font-bold text-gray-800">Michael K.</h4>
+                            <p class="font-museo text-sm text-gray-500">Business Professional</p>
+                        </div>
+                    </div>
+                    <p class="font-museo text-gray-600 italic mb-6">
+                        "Working with Talking Tales improved my presentation skills dramatically. The confidence I gained has opened new opportunities in my career. Highly recommend their adult programs."
+                    </p>
+                    <div class="flex text-primary-yellow">
+                        ★★★★★
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="card-hover bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-orange rounded-full flex items-center justify-center text-white font-bold">L</div>
+                        <div class="ml-4">
+                            <h4 class="font-museo-rounded font-bold text-gray-800">Lisa R.</h4>
+                            <p class="font-museo text-sm text-gray-500">Parent of teenager</p>
+                        </div>
+                    </div>
+                    <p class="font-museo text-gray-600 italic mb-6">
+                        "The online sessions were perfect for our busy schedule. My son made remarkable progress, and the therapists were always patient and encouraging. Thank you for helping him find his voice."
+                    </p>
+                    <div class="flex text-primary-yellow">
+                        ★★★★★
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="font-museo-rounded text-4xl md:text-5xl font-bold text-primary-gray mb-8">
+                        Ready to Start Your
+                        <span class="text-primary-green">Communication Journey?</span>
+                    </h2>
+                    
+                    <p class="font-museo text-xl text-gray-600 mb-8">
+                        Take the first step towards clearer communication. Schedule your consultation today and discover how we can help you achieve your communication goals.
+                    </p>
+                    
+                    <!-- Contact Methods -->
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-blue/10 rounded-xl flex items-center justify-center">
+                                <div class="w-6 h-6 bg-primary-blue rounded-full"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-museo-rounded font-bold text-gray-800">Phone</h4>
+                                <p class="font-museo text-gray-600">(555) 123-4567</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                                <div class="w-6 h-6 bg-primary-green rounded-full"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-museo-rounded font-bold text-gray-800">Email</h4>
+                                <p class="font-museo text-gray-600">hello@talkingtales.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary-orange/10 rounded-xl flex items-center justify-center">
+                                <div class="w-6 h-6 bg-primary-orange rounded-full"></div>
+                            </div>
+                            <div>
+                                <h4 class="font-museo-rounded font-bold text-gray-800">Location</h4>
+                                <p class="font-museo text-gray-600">123 Therapy Lane, Wellness City</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <button class="bg-gradient-to-r from-primary-blue to-primary-green text-white font-museo-rounded font-bold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            Book Consultation
+                        </button>
+                        <button class="border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white font-museo-rounded font-bold px-8 py-4 rounded-full transition-all duration-300">
+                            Download Brochure
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-gray-50 rounded-3xl p-8">
+                    <h3 class="font-museo-rounded text-2xl font-bold text-primary-gray mb-6">Send us a Message</h3>
+                    
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="font-museo text-sm font-semibold text-gray-700 mb-2 block">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-blue focus:ring-2 focus:ring-primary-blue/20 transition-all duration-300">
+                            </div>
+                            <div>
+                                <label class="font-museo text-sm font-semibold text-gray-700 mb-2 block">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-blue focus:ring-2 focus:ring-primary-blue/20 transition-all duration-300">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="font-museo text-sm font-semibold text-gray-700 mb-2 block">Email</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-blue focus:ring-2 focus:ring-primary-blue/20 transition-all duration-300">
+                        </div>
+                        
+                        <div>
+                            <label class="font-museo text-sm font-semibold text-gray-700 mb-2 block">Phone</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-blue focus:ring-2 focus:ring-primary-blue/20 transition-all duration-300">
+                        </div>
+                        
+                        <div>
+                            <label class="font-museo text-sm font-semibold text-gray-700 mb-2 block">Service Interest</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-blue focus:ring-2 focus:ring-primary-blue/20 transition-all duration-300">
+                                <option>Pediatric Therapy</option>
+                                <option>Adult Therapy</option>
+                                <option>Language Development</option>
+                                <option>Online Sessions</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="font-museo text-sm font-semibold text-gray-700 mb-2 block">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary-blue focus:ring-2 focus:ring-primary-blue/20 transition-all duration-300 resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary-blue to-primary-green text-white font-museo-rounded font-bold py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                            <div class="grid grid-cols-2 gap-0.5 w-8 h-8">
+                                <div class="w-3 h-3 bg-primary-blue rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary-yellow rounded-lg"></div>
+                                <div class="w-3 h-3 bg-primary-orange rounded-full"></div>
+                                <div class="w-3 h-3 bg-primary-green rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-museo-rounded text-2xl font-bold">Talking Tales</h3>
+                            <p class="font-museo text-sm text-gray-400">Speech Therapy</p>
+                        </div>
+                    </div>
+                    
+                    <p class="font-museo text-gray-300 mb-6 max-w-md">
+                        Empowering voices and building confidence through professional speech therapy services. Your journey to clear communication starts here.
+                    </p>
+                    
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary-blue transition-colors duration-300 cursor-pointer">
+                            <div class="w-4 h-4 bg-white rounded-full"></div>
+                        </div>
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary-green transition-colors duration-300 cursor-pointer">
+                            <div class="w-4 h-4 bg-white rounded-full"></div>
+                        </div>
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary-orange transition-colors duration-300 cursor-pointer">
+                            <div class="w-4 h-4 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-museo-rounded text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 font-museo">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary-blue transition-colors duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary-blue transition-colors duration-300">Services</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-primary-blue transition-colors duration-300">About</a></li>
+                        <li><a href="#stories" class="text-gray-400 hover:text-primary-blue transition-colors duration-300">Success Stories</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary-blue transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="font-museo-rounded text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3 font-museo">
+                        <li><a href="#" class="text-gray-400 hover:text-primary-green transition-colors duration-300">Pediatric Therapy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary-green transition-colors duration-300">Adult Therapy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary-green transition-colors duration-300">Language Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary-green transition-colors duration-300">Online Sessions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary-green transition-colors duration-300">Consultations</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="font-museo text-gray-400 text-sm mb-4 md:mb-0">
+                    © 2024 Talking Tales Speech Therapy. All rights reserved.
+                </p>
+                <div class="flex space-x-6 font-museo text-sm">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileServicesToggle = document.querySelector('.mobile-services-toggle');
+            const mobileServicesDropdown = document.querySelector('.mobile-services-dropdown');
+
+            function openMobileMenu() {
+                console.log('Opening mobile menu');
+                mobileMenu.classList.add('show');
+                mobileOverlay.classList.add('show');
+                mobileMenu.style.transform = 'translateX(0)';
+                mobileOverlay.style.opacity = '1';
+                mobileOverlay.style.visibility = 'visible';
+                hamburger.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenuFunc() {
+                console.log('Closing mobile menu');
+                mobileMenu.classList.remove('show');
+                mobileOverlay.classList.remove('show');
+                mobileMenu.style.transform = 'translateX(100%)';
+                mobileOverlay.style.opacity = '0';
+                mobileOverlay.style.visibility = 'hidden';
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+                
+                // Close mobile services dropdown when closing menu
+                if (mobileServicesDropdown) {
+                    mobileServicesDropdown.classList.remove('open');
+                    if (mobileServicesToggle) {
+                        mobileServicesToggle.querySelector('svg').style.transform = 'rotate(0deg)';
+                    }
+                }
+            }
+
+            // Mobile services dropdown toggle
+            if (mobileServicesToggle && mobileServicesDropdown) {
+                mobileServicesToggle.addEventListener('click', function() {
+                    const isOpen = mobileServicesDropdown.classList.contains('open');
+                    const arrow = this.querySelector('svg');
+                    
+                    if (isOpen) {
+                        mobileServicesDropdown.classList.remove('open');
+                        arrow.style.transform = 'rotate(0deg)';
+                    } else {
+                        mobileServicesDropdown.classList.add('open');
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                });
+            }
+
+            // Event listeners
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openMobileMenu();
+                });
+            }
+
+            if (closeMobileMenu) {
+                closeMobileMenu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeMobileMenuFunc();
+                });
+            }
+
+            if (mobileOverlay) {
+                mobileOverlay.addEventListener('click', closeMobileMenuFunc);
+            }
+
+            // Close mobile menu when clicking on nav links
+            document.querySelectorAll('.mobile-nav-item').forEach(link => {
+                link.addEventListener('click', closeMobileMenuFunc);
+            });
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+
+            // Close mobile menu on window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) {
+                    closeMobileMenuFunc();
+                }
+            });
+
+            // Logo click animation
+            const logoElement = document.querySelector('.group.cursor-pointer');
+            if (logoElement) {
+                logoElement.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const logo = e.currentTarget.querySelector('.w-12.h-12');
+                    if (logo) {
+                        logo.style.transform = 'scale(1.2) rotate(10deg)';
+                        setTimeout(() => {
+                            logo.style.transform = 'scale(1) rotate(0deg)';
+                        }, 300);
+                    }
+                });
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('slide-in-up');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe sections for animations
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

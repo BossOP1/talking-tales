@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking Tales - Creative Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Museo+Sans+Rounded:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0B87C5',
+                        'primary-yellow': '#FFC73C',
+                        'primary-orange': '#F36E3B',
+                        'primary-green': '#3DD288',
+                        'primary-gray': '#4A4A4A',
+                        'primary-cream': '#F9F0E5'
+                    },
+                    fontFamily: {
+                        'museo-rounded': ['Museo Sans Rounded', 'sans-serif'],
+                        'museo': ['Source Sans Pro', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<nav class="bg-white/95 backdrop-blur-lg border-b border-primary-cream/50 sticky top-0 z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <!-- Logo Section -->
+            <div class="flex items-center space-x-3 group cursor-pointer">
+                <!-- Logo Container with Elements -->
+                <div class="relative">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary-blue/10 to-primary-green/10 rounded-xl flex items-center justify-center border border-primary-cream/50 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                        <!-- Mini recreated logo elements -->
+                        <div class="grid grid-cols-2 gap-0.5 w-8 h-8">
+                            <!-- Top Left: Smiley -->
+                            <div class="flex items-center justify-center">
+                                <div class="w-3 h-3 bg-primary-blue rounded-full flex items-center justify-center">
+                                    <div class="flex space-x-0.5 mb-0.5">
+                                        <div class="w-0.5 h-0.5 bg-white rounded-full animate-blink"></div>
+                                        <div class="w-0.5 h-0.5 bg-white rounded-full animate-blink"></div>
+                                    </div>
+                                    <div class="absolute w-1.5 h-0.5 border-b border-white rounded-full"></div>
+                                </div>
+                            </div>
+                            <!-- Top Right: Speech Bubble -->
+                            <div class="flex items-center justify-center">
+                                <div class="relative">
+                                    <div class="w-3 h-2 bg-primary-yellow rounded-lg rounded-br-sm"></div>
+                                    <div class="absolute -bottom-0.5 right-0.5 w-1 h-1 bg-primary-yellow transform rotate-45"></div>
+                                </div>
+                            </div>
+                            <!-- Bottom Left: Tulip -->
+                            <div class="flex items-center justify-center">
+                                <div class="w-3 h-3.5 bg-primary-orange rounded-full rounded-tl-lg rounded-br-lg"></div>
+                            </div>
+                            <!-- Bottom Right: Heart -->
+                            <div class="flex items-center justify-center">
+                                <div class="relative">
+                                    <div class="w-3 h-2.5 bg-primary-green rounded-full"></div>
+                                    <div class="absolute -top-0.5 left-0.5 w-2 h-1.5 bg-primary-green rounded-t-full transform -rotate-45"></div>
+                                    <div class="absolute -top-0.5 right-0.5 w-2 h-1.5 bg-primary-green rounded-t-full transform rotate-45"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating accent -->
+                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-primary-yellow rounded-full opacity-80 group-hover:animate-bounce"></div>
+                </div>
+                
+                <!-- Brand Text -->
+                <div class="hidden sm:block">
+                    <h1 class="font-museo-rounded text-2xl font-black text-primary-gray group-hover:text-primary-blue transition-colors duration-300">
+                        Talking Tales
+                    </h1>
+                    <p class="font-museo text-xs text-primary-gray/60 -mt-1">Speech Therapy</p>
+                </div>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center space-x-8">
+                <a href="#" class="nav-link group flex items-center space-x-2 px-4 py-2 rounded-full hover:bg-primary-blue/5 transition-all duration-300">
+                    <i class="fas fa-home text-primary-blue group-hover:scale-110 transition-transform duration-300"></i>
+                    <span class="font-museo font-medium text-primary-gray group-hover:text-primary-blue">Home</span>
+                </a>
+                
+                <div class="relative group">
+                    <a href="#" class="nav-link group flex items-center space-x-2 px-4 py-2 rounded-full hover:bg-primary-yellow/5 transition-all duration-300">
+                        <i class="fas fa-comments text-primary-yellow group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="font-museo font-medium text-primary-gray group-hover:text-primary-yellow">Services</span>
+                        <i class="fas fa-chevron-down text-xs text-primary-gray/50 group-hover:rotate-180 transition-transform duration-300"></i>
+                    </a>
+                    
+                    <!-- Services Dropdown -->
+                    <div class="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl border border-primary-cream/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                        <div class="p-4 space-y-3">
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-blue/5 transition-all duration-300 group/item">
+                                <div class="w-8 h-8 bg-primary-blue/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-child text-primary-blue text-sm"></i>
+                                </div>
+                                <div>
+                                    <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-blue">Pediatric Therapy</div>
+                                    <div class="font-museo text-xs text-primary-gray/60">For children 2-18 years</div>
+                                </div>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-yellow/5 transition-all duration-300 group/item">
+                                <div class="w-8 h-8 bg-primary-yellow/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-primary-yellow text-sm"></i>
+                                </div>
+                                <div>
+                                    <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-yellow">Adult Therapy</div>
+                                    <div class="font-museo text-xs text-primary-gray/60">Professional support</div>
+                                </div>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-orange/5 transition-all duration-300 group/item">
+                                <div class="w-8 h-8 bg-primary-orange/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-seedling text-primary-orange text-sm"></i>
+                                </div>
+                                <div>
+                                    <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-orange">Language Development</div>
+                                    <div class="font-museo text-xs text-primary-gray/60">Growth focused</div>
+                                </div>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-green/5 transition-all duration-300 group/item">
+                                <div class="w-8 h-8 bg-primary-green/10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-laptop text-primary-green text-sm"></i>
+                                </div>
+                                <div>
+                                    <div class="font-museo-rounded font-semibold text-primary-gray text-sm group-hover/item:text-primary-green">Online Sessions</div>
+                                    <div class="font-museo text-xs text-primary-gray/60">From home comfort</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="nav-link group flex items-center space-x-2 px-4 py-2 rounded-full hover:bg-primary-orange/5 transition-all duration-300">
+                    <i class="fas fa-info-circle text-primary-orange group-hover:scale-110 transition-transform duration-300"></i>
+                    <span class="font-museo font-medium text-primary-gray group-hover:text-primary-orange">About</span>
+                </a>
+                
+                <a href="#" class="nav-link group flex items-center space-x-2 px-4 py-2 rounded-full hover:bg-primary-green/5 transition-all duration-300">
+                    <i class="fas fa-star text-primary-green group-hover:scale-110 transition-transform duration-300"></i>
+                    <span class="font-museo font-medium text-primary-gray group-hover:text-primary-green">Success Stories</span>
+                </a>
+                
+                <a href="#" class="nav-link group flex items-center space-x-2 px-4 py-2 rounded-full hover:bg-primary-blue/5 transition-all duration-300">
+                    <i class="fas fa-phone text-primary-blue group-hover:scale-110 transition-transform duration-300"></i>
+                    <span class="font-museo font-medium text-primary-gray group-hover:text-primary-blue">Contact</span>
+                </a>
+            </div>
+
+            <!-- CTA Button & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <!-- CTA Button -->
+                <button class="hidden md:flex items-center space-x-2 bg-gradient-to-r from-primary-blue to-primary-green hover:from-primary-green hover:to-primary-blue text-white font-museo-rounded font-bold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+                    <span>Book Session</span>
+                    <i class="fas fa-calendar-plus group-hover:scale-110 transition-transform duration-300"></i>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden relative w-10 h-10 bg-primary-blue/10 rounded-full flex items-center justify-center hover:bg-primary-blue/20 transition-all duration-300" id="mobileMenuBtn">
+                    <div class="hamburger">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 z-40" id="mobileOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white/95 backdrop-blur-xl shadow-2xl transform translate-x-full transition-transform duration-300 z-50" id="mobileMenu">
+        <div class="p-6">
+            <!-- Mobile Header -->
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary-blue/10 to-primary-green/10 rounded-xl flex items-center justify-center border border-primary-cream/50">
+                        <div class="grid grid-cols-2 gap-0.5 w-6 h-6">
+                            <div class="w-2.5 h-2.5 bg-primary-blue rounded-full"></div>
+                            <div class="w-2.5 h-2.5 bg-primary-yellow rounded-lg"></div>
+                            <div class="w-2.5 h-2.5 bg-primary-orange rounded-full"></div>
+                            <div class="w-2.5 h-2.5 bg-primary-green rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="font-museo-rounded text-lg font-bold text-primary-gray">Talking Tales</h2>
+                        <p class="font-museo text-xs text-primary-gray/60">Speech Therapy</p>
+                    </div>
+                </div>
+                <button class="w-8 h-8 bg-primary-gray/10 rounded-full flex items-center justify-center hover:bg-primary-gray/20 transition-colors duration-300" id="closeMobileMenu">
+                    <i class="fas fa-times text-primary-gray"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="space-y-2">
+                <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-primary-blue/5 transition-all duration-300 group">
+                    <div class="w-10 h-10 bg-primary-blue/10 rounded-xl flex items-center justify-center group-hover:bg-primary-blue/20 transition-colors duration-300">
+                        <i class="fas fa-home text-primary-blue"></i>
+                    </div>
+                    <span class="font-museo font-semibold text-primary-gray group-hover:text-primary-blue">Home</span>
+                </a>
+
+                <!-- Mobile Services Accordion -->
+                <div class="mobile-nav-item">
+                    <button class="w-full flex items-center justify-between p-4 rounded-2xl hover:bg-primary-yellow/5 transition-all duration-300 group" onclick="toggleMobileSubmenu('services')">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-primary-yellow/10 rounded-xl flex items-center justify-center group-hover:bg-primary-yellow/20 transition-colors duration-300">
+                                <i class="fas fa-comments text-primary-yellow"></i>
+                            </div>
+                            <span class="font-museo font-semibold text-primary-gray group-hover:text-primary-yellow">Services</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-primary-gray/50 transition-transform duration-300" id="servicesChevron"></i>
+                    </button>
+                    <div class="mobile-submenu overflow-hidden transition-all duration-300 max-h-0" id="servicesSubmenu">
+                        <div class="ml-14 mt-2 space-y-2">
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-blue/5 transition-all duration-300">
+                                <i class="fas fa-child text-primary-blue text-sm"></i>
+                                <span class="font-museo text-sm text-primary-gray">Pediatric Therapy</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-yellow/5 transition-all duration-300">
+                                <i class="fas fa-user text-primary-yellow text-sm"></i>
+                                <span class="font-museo text-sm text-primary-gray">Adult Therapy</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-orange/5 transition-all duration-300">
+                                <i class="fas fa-seedling text-primary-orange text-sm"></i>
+                                <span class="font-museo text-sm text-primary-gray">Language Development</span>
+                            </a>
+                            <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-green/5 transition-all duration-300">
+                                <i class="fas fa-laptop text-primary-green text-sm"></i>
+                                <span class="font-museo text-sm text-primary-gray">Online Sessions</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-primary-orange/5 transition-all duration-300 group">
+                    <div class="w-10 h-10 bg-primary-orange/10 rounded-xl flex items-center justify-center group-hover:bg-primary-orange/20 transition-colors duration-300">
+                        <i class="fas fa-info-circle text-primary-orange"></i>
+                    </div>
+                    <span class="font-museo font-semibold text-primary-gray group-hover:text-primary-orange">About Us</span>
+                </a>
+
+                <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-primary-green/5 transition-all duration-300 group">
+                    <div class="w-10 h-10 bg-primary-green/10 rounded-xl flex items-center justify-center group-hover:bg-primary-green/20 transition-colors duration-300">
+                        <i class="fas fa-star text-primary-green"></i>
+                    </div>
+                    <span class="font-museo font-semibold text-primary-gray group-hover:text-primary-green">Success Stories</span>
+                </a>
+
+                <a href="#" class="mobile-nav-item flex items-center space-x-4 p-4 rounded-2xl hover:bg-primary-blue/5 transition-all duration-300 group">
+                    <div class="w-10 h-10 bg-primary-blue/10 rounded-xl flex items-center justify-center group-hover:bg-primary-blue/20 transition-colors duration-300">
+                        <i class="fas fa-phone text-primary-blue"></i>
+                    </div>
+                    <span class="font-museo font-semibold text-primary-gray group-hover:text-primary-blue">Contact</span>
+                </a>
+            </div>
+
+            <!-- Mobile CTA -->
+            <div class="mt-8 pt-6 border-t border-primary-cream/50">
+                <button class="w-full bg-gradient-to-r from-primary-blue to-primary-green text-white font-museo-rounded font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center justify-center space-x-2">
+                    <i class="fas fa-calendar-plus"></i>
+                    <span>Book Your Session</span>
+                </button>
+                
+                <!-- Mobile Contact Info -->
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-center space-x-3 text-sm">
+                        <i class="fas fa-phone text-primary-blue"></i>
+                        <span class="font-museo text-primary-gray">+1 (555) 123-4567</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-sm">
+                        <i class="fas fa-envelope text-primary-yellow"></i>
+                        <span class="font-museo text-primary-gray">hello@talkingtales.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Demo Content -->
+<div class="min-h-screen bg-gradient-to-br from-primary-cream/30 to-white p-8">
+    <div class="max-w-4xl mx-auto text-center pt-20">
+        <h1 class="font-museo-rounded text-4xl font-black text-primary-gray mb-6">Creative Navbar Demo</h1>
+        <p class="font-museo text-lg text-primary-gray/70 mb-8">Scroll to see the navbar in action! Test the mobile menu by resizing your browser.</p>
+        <div class="space-y-8">
+            <div class="h-64 bg-white/50 rounded-2xl flex items-center justify-center">
+                <p class="font-museo text-primary-gray">Demo Content Section 1</p>
+            </div>
+            <div class="h-64 bg-white/50 rounded-2xl flex items-center justify-center">
+                <p class="font-museo text-primary-gray">Demo Content Section 2</p>
+            </div>
+            <div class="h-64 bg-white/50 rounded-2xl flex items-center justify-center">
+                <p class="font-museo text-primary-gray">Demo Content Section 3</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes blink {
+        0%, 90%, 100% { transform: scaleY(1); }
+        95% { transform: scaleY(0.1); }
+    }
+    
+    .animate-blink {
+        animation: blink 3s infinite;
+    }
+
+    /* Hamburger Menu Styles */
+    .hamburger {
+        width: 18px;
+        height: 12px;
+        position: relative;
+    }
+
+    .hamburger-line {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: #0B87C5;
+        border-radius: 1px;
+        position: absolute;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger-line:nth-child(1) { top: 0; }
+    .hamburger-line:nth-child(2) { top: 5px; }
+    .hamburger-line:nth-child(3) { top: 10px; }
+
+    .hamburger.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg);
+        top: 5px;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 5px;
+    }
+
+    /* Mobile Nav Animation */
+    .mobile-nav-item {
+        animation: slideInRight 0.3s ease-out forwards;
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    .mobile-nav-item:nth-child(1) { animation-delay: 0.1s; }
+    .mobile-nav-item:nth-child(2) { animation-delay: 0.2s; }
+    .mobile-nav-item:nth-child(3) { animation-delay: 0.3s; }
+    .mobile-nav-item:nth-child(4) { animation-delay: 0.4s; }
+    .mobile-nav-item:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes slideInRight {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Navbar scroll effect */
+    .navbar-scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(249, 240, 229, 0.8);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+</style>
+
+<script>
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+
+    function openMobileMenu() {
+        mobileMenu.style.transform = 'translateX(0)';
+        mobileOverlay.style.opacity = '1';
+        mobileOverlay.style.visibility = 'visible';
+        hamburger.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenuFunc() {
+        mobileMenu.style.transform = 'translateX(100%)';
+        mobileOverlay.style.opacity = '0';
+        mobileOverlay.style.visibility = 'invisible';
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+    mobileOverlay.addEventListener('click', closeMobileMenuFunc);
+
+    // Mobile submenu toggle
+    function toggleMobileSubmenu(menuId) {
+        const submenu = document.getElementById(menuId + 'Submenu');
+        const chevron = document.getElementById(menuId + 'Chevron');
+        
+        if (submenu.style.maxHeight === '0px' || submenu.style.maxHeight === '') {
+            submenu.style.maxHeight = submenu.scrollHeight + 'px';
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            submenu.style.maxHeight = '0px';
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 10) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
+    });
+
+    // Close mobile menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            closeMobileMenuFunc();
+        }
+    });
+
+    // Add click animation to nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            link.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                link.style.transform = 'scale(1)';
+            }, 150);
+        });
+    });
+
+    // Logo click animation
+    document.querySelector('.group.cursor-pointer').addEventListener('click', (e) => {
+        e.preventDefault();
+        const logo = e.currentTarget.querySelector('.w-12.h-12');
+        logo.style.transform = 'scale(1.2) rotate(10deg)';
+        setTimeout(() => {
+            logo.style.transform = 'scale(1) rotate(0deg)';
+        }, 300);
+    });
+</script>
+</html>
